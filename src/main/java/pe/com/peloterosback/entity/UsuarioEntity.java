@@ -1,6 +1,8 @@
 package pe.com.peloterosback.entity;
 
 import java.io.Serializable;
+import java.sql.Blob;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,26 +18,42 @@ import lombok.Setter;
 @Setter
 @Data
 @Entity
-@Table(name = "usuario")
+@Table(name = "Usuarios")
 public class UsuarioEntity implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long usuario_id;
 	
-	@Column(unique = true,nullable = false)
+	
+	@Column(name = "rol_id", nullable = false)	
+	private Long rol_id;
+	
+	@Column(nullable = false)
 	private String nombre;
 	
 	@Column(unique = true,nullable = false)
 	private String correo;
 	
+	@Column(nullable = false)
+	private String contrasenia_hash;
+	
+	@Column(nullable = false)	
+	private Integer tipo_usuario;
+	
 	@Column
 	private String telefono;
 	
-	@Column(unique = true,nullable = false,length = 60)
-	private String password;
+	@Column 
+	private Timestamp fecha_registro;
+
+	@Column
+	private Blob foto_perfil;
+	
+	@Column(nullable = false)
+	private Boolean estado;
 	
 //	@ManyToOne
 //	@JsonBackReference("roles-usuarios")
