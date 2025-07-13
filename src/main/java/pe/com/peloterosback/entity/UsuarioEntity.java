@@ -23,18 +23,19 @@ public class UsuarioEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 	
-	@Column(unique = true,nullable = false)
+	@Column(name = "nombre", unique = true,nullable = false)
 	private String nombre;
 	
-	@Column(unique = true,nullable = false)
+	@Column(name = "correo",unique = true,nullable = false)
 	private String correo;
 	
-	@Column
+	@Column(name = "telefono",unique = true,nullable = false)
 	private String telefono;
 	
-	@Column(unique = true,nullable = false,length = 60)
+	@Column(name = "password",unique = true,nullable = false,length = 60)
 	private String password;
 	
 //	@ManyToOne
